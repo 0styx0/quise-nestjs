@@ -1,0 +1,14 @@
+
+services:
+  mongo:
+    image: mongo:8-noble
+    container_name: ecommerce-mongo
+    restart: always
+    ports:
+      - "27017:27017"
+    environment:
+      MONGO_INITDB_DATABASE: ecommerce
+      MONGO_INITDB_ROOT_USERNAME: db_admin
+      MONGO_INITDB_ROOT_PASSWORD: db_password
+    volumes:
+      - ./mongo-init.js:/docker-entrypoint-initdb.d/mongo-init.js:ro
