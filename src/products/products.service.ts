@@ -7,18 +7,14 @@ import { Product } from './product.entity';
 export class ProductsService {
   constructor(
     @InjectRepository(Product)
-    private usersRepository: Repository<Product>,
+    private productsRepository: Repository<Product>,
   ) {}
 
   findAll(): Promise<Product[]> {
-    return this.usersRepository.find();
+    return this.productsRepository.find();
   }
 
-  findOne(id: ObjectId): Promise<Product | null> {
-    return this.usersRepository.findOneBy({ id });
-  }
-
-  async remove(id: number): Promise<void> {
-    await this.usersRepository.delete(id);
+  findOne(id: string): Promise<Product | null> {
+    return this.productsRepository.findOneBy({ _id: new ObjectId(id) });
   }
 }

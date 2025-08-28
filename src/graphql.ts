@@ -8,7 +8,7 @@
 /* tslint:disable */
 /* eslint-disable */
 
-export interface Product {
+export class Product {
     id: string;
     name: string;
     description: string;
@@ -16,9 +16,10 @@ export interface Product {
     imageUrl: string;
 }
 
-export interface IQuery {
-    products(): Product[] | Promise<Product[]>;
-    product(id: string): Nullable<Product> | Promise<Nullable<Product>>;
+export abstract class IQuery {
+    abstract getProduct(id: string): Nullable<Product> | Promise<Nullable<Product>>;
+
+    abstract getProducts(): Product[] | Promise<Product[]>;
 }
 
 type Nullable<T> = T | null;
