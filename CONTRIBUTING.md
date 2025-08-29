@@ -2,6 +2,7 @@
 
 ## Setup the project
 - Clone the repo
+- Create a `.env` using `.env.example` as a template
 - Create the database:
     - docker-compose up -d
     - yarn ts-node src/db/seed.ts

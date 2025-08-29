@@ -7,15 +7,28 @@ import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
 import { join } from 'path';
 import { ApolloServerPluginLandingPageLocalDefault } from '@apollo/server/plugin/landingPage/default';
 import { ProductsModule } from './products/products.module';
+import { ConfigModule, ConfigService } from '@nestjs/config';
+
 @Module({
   imports: [
-    TypeOrmModule.forRoot({
-      type: 'mongodb',
-      // todo hide credentials
-      url: 'mongodb://db_admin:db_password@localhost:27017/ecommerce?authSource=admin',
-      database: 'ecommerce',
-      synchronize: true, // todo change
-      autoLoadEntities: true,
+    ConfigModule.forRoot({
+      isGlobal: true,
+      envFilePath: '.env',
+    }),
+    TypeOrmModule.forRootAsync({
+      imports: [ConfigModule],
+      inject: [ConfigService],
+      useFactory: (configService: ConfigService) => ({
+        type: 'mongodb',
+        host: configService.get('DB_HOST'),
+        port: Number(configService.get<string>('DB_PORT')),
+        username: configService.get<string>('DB_USERNAME'),
+        password: configService.get<string>('DB_PASSWORD'),
+        database: configService.get<string>('DB_DATABASE'),
+        authSource: configService.get<string>('DB_AUTHSOURCE'),
+        synchronize: true, // todo change for prod
+        autoLoadEntities: true,
+      }),
     }),
     GraphQLModule.forRoot<ApolloDriverConfig>({
       driver: ApolloDriver,
