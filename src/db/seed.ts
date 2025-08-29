@@ -1,11 +1,17 @@
+import 'dotenv/config'; // loads .env into process.env
 import { DataSource } from 'typeorm';
 import { Product } from '../products/product.entity';
 
-// TypeORM connection using auth from Docker Compose
 const AppDataSource = new DataSource({
-  type: 'mongodb',
-  url: 'mongodb://db_admin:db_password@localhost:27017/ecommerce?authSource=admin',
-  database: 'ecommerce',
+  type: 'mongodb' as const,
+  host: process.env.DB_HOST,
+  port: Number(process.env.DB_PORT),
+  username: process.env.DB_USERNAME,
+  password: process.env.DB_PASSWORD,
+  database: process.env.DB_DATABASE,
+  extra: {
+    authSource: process.env.DB_AUTHSOURCE,
+  },
   synchronize: true,
   entities: [Product],
 });
@@ -15,10 +21,8 @@ async function seed() {
 
   const productRepo = AppDataSource.getMongoRepository(Product);
 
-  // Optional: clear existing products
   await productRepo.deleteMany({});
 
-  // Insert seed products
   const products = [
     {
       name: 'T-Shirt',
@@ -41,7 +45,7 @@ async function seed() {
   ];
 
   await productRepo.insertMany(products);
-  console.log('Database seeded successfully via NestJS + TypeORM!');
+  console.log('Database seeded successfully');
 
   await AppDataSource.destroy();
 }
