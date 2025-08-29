@@ -1,4 +1,4 @@
-import 'dotenv/config'; // loads .env into process.env
+import 'dotenv/config';
 import { DataSource } from 'typeorm';
 import { Product } from '../products/product.entity';
 
