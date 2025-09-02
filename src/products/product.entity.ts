@@ -4,6 +4,9 @@ import { Entity, ObjectId, Column, ObjectIdColumn } from 'typeorm';
 export class Product {
   @ObjectIdColumn()
   _id: ObjectId;
+  get id(): string {
+    return this._id.toHexString();
+  }
 
   @Column()
   name: string;

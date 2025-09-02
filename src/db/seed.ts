@@ -26,18 +26,21 @@ async function seed() {
   const products = [
     {
       name: 'T-Shirt',
+      slug: 't-shirt',
       description: '100% cotton',
       price: 1999,
       imageUrl: '/images/tshirt.png',
     },
     {
       name: 'Running Shoes',
+      slug: 'running-shoes',
       description: 'Comfortable shoes',
       price: 4999,
       imageUrl: '/images/shoes.png',
     },
     {
       name: 'Baseball Cap',
+      slug: 'baseball-cap',
       description: 'Stylish hat',
       price: 1299,
       imageUrl: '/images/hat.png',
