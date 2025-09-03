@@ -47,6 +47,29 @@ async function seed() {
       price: 1299,
       imageUrl: 'https://live.staticflickr.com/4149/5004795678_789e5900f9.jpg',
     },
+    {
+      name: 'Yacht',
+      slug: 'luxury-yacht',
+      description: 'High-end sailing experience',
+      price: 25000,
+      imageUrl:
+        'https://live.staticflickr.com/3949/15035857384_046901bb01_b.jpg',
+    },
+    {
+      name: 'Coffee Cup',
+      slug: 'ceramic-coffee-cup',
+      description: 'Elegant handmade coffee cup',
+      price: 1999,
+      imageUrl: 'https://live.staticflickr.com/55/161419311_ac8eca3725_b.jpg',
+    },
+    {
+      name: 'Modern Chair',
+      slug: 'modern-chair',
+      description: 'Comfortable and stylish seating',
+      price: 8999,
+      imageUrl:
+        'https://live.staticflickr.com/8358/8411703484_e927ed4410_b.jpg',
+    },
   ];
 
   await productRepo.insertMany(products);
