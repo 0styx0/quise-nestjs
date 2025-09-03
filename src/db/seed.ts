@@ -29,21 +29,23 @@ async function seed() {
       slug: 't-shirt',
       description: '100% cotton',
       price: 1999,
-      imageUrl: '/images/tshirt.png',
+      imageUrl:
+        'https://live.staticflickr.com/4006/4625525150_b85341accd_b.jpg',
     },
     {
       name: 'Running Shoes',
       slug: 'running-shoes',
       description: 'Comfortable shoes',
       price: 4999,
-      imageUrl: '/images/shoes.png',
+      imageUrl:
+        'https://live.staticflickr.com/2215/2102196106_3894486bd2_b.jpg',
     },
     {
       name: 'Baseball Cap',
       slug: 'baseball-cap',
       description: 'Stylish hat',
       price: 1299,
-      imageUrl: '/images/hat.png',
+      imageUrl: 'https://live.staticflickr.com/4149/5004795678_789e5900f9.jpg',
     },
   ];
 
