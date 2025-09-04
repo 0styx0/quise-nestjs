@@ -1,6 +1,6 @@
 import { Resolver, Mutation, Args } from '@nestjs/graphql';
 import { CheckoutService } from './checkout.service';
-import { CheckoutProductDto, CreateCheckoutInput } from './dto/create-checkout.input';
+import { CreateCheckoutInput } from './dto/create-checkout.input';
 
 @Resolver('Checkout')
 export class CheckoutResolver {

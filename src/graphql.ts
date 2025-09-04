@@ -8,6 +8,11 @@
 /* tslint:disable */
 /* eslint-disable */
 
+export enum CheckoutStatus {
+    SUCCESS = "SUCCESS",
+    FAILED = "FAILED"
+}
+
 export class CheckoutProductInput {
     id: string;
 }
@@ -16,8 +21,18 @@ export class CheckoutInput {
     products: CheckoutProductInput[];
 }
 
+export class CheckoutResult {
+    status: CheckoutStatus;
+    additionalInfo: string;
+}
+
+export class CheckoutProductResult {
+    product: Product;
+    result: CheckoutResult;
+}
+
 export abstract class IMutation {
-    abstract checkout(checkoutProducts: CheckoutInput): Product[] | Promise<Product[]>;
+    abstract checkout(checkoutProducts: CheckoutInput): CheckoutProductResult[] | Promise<CheckoutProductResult[]>;
 }
 
 export class Product {

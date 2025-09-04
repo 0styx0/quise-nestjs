@@ -6,6 +6,21 @@ input CheckoutInput {
   products: [CheckoutProductInput!]!
 }
 
+enum CheckoutStatus {
+  SUCCESS
+  FAILED
+}
+
+type CheckoutResult {
+  status: CheckoutStatus!
+  additionalInfo: String!
+}
+
+type CheckoutProductResult {
+  product: Product!
+  result: CheckoutResult!
+}
+
 type Mutation {
-  checkout(checkoutProducts: CheckoutInput!): [Product!]!
+  checkout(checkoutProducts: CheckoutInput!): [CheckoutProductResult!]!
 }
