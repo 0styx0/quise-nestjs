@@ -8,6 +8,7 @@ import { join } from 'path';
 import { ApolloServerPluginLandingPageLocalDefault } from '@apollo/server/plugin/landingPage/default';
 import { ProductsModule } from './products/products.module';
 import { ConfigModule, ConfigService } from '@nestjs/config';
+import { CheckoutModule } from './checkout/checkout.module';
 
 @Module({
   imports: [
@@ -43,6 +44,7 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
       plugins: [ApolloServerPluginLandingPageLocalDefault()],
     }),
     ProductsModule,
+    CheckoutModule,
   ],
   controllers: [AppController],
   providers: [AppService],

@@ -8,6 +8,18 @@
 /* tslint:disable */
 /* eslint-disable */
 
+export class CheckoutProductInput {
+    id: string;
+}
+
+export class CheckoutInput {
+    products: CheckoutProductInput[];
+}
+
+export abstract class IMutation {
+    abstract checkout(checkoutProducts: CheckoutInput): Product[] | Promise<Product[]>;
+}
+
 export class Product {
     id: string;
     slug: string;
@@ -18,8 +30,6 @@ export class Product {
 }
 
 export abstract class IQuery {
-    abstract getProduct(id: string): Nullable<Product> | Promise<Nullable<Product>>;
-
     abstract getProducts(): Product[] | Promise<Product[]>;
 }
 

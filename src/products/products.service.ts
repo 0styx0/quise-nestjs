@@ -1,20 +1,25 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { ObjectId, Repository } from 'typeorm';
+import { MongoRepository } from 'typeorm';
+import { ObjectId } from 'mongodb';
 import { Product } from './product.entity';
 
 @Injectable()
 export class ProductsService {
   constructor(
     @InjectRepository(Product)
-    private productsRepository: Repository<Product>,
+    //  must use MongoRep for advanced find operations https://typeorm.io/docs/drivers/mongodb/#using-mongoentitymanager-and-mongorepository
+    private productsRepository: MongoRepository<Product>,
   ) {}
 
   findAll(): Promise<Product[]> {
     return this.productsRepository.find();
   }
-
-  findOne(id: string): Promise<Product | null> {
-    return this.productsRepository.findOneBy({ _id: new ObjectId(id) });
+  
+  findByIds(ids: ObjectId[]): Promise<Product[]> {
+    const objectIds = ids.map(id => new ObjectId(id));
+    return this.productsRepository.find({
+      where: { _id: { $in: objectIds } },
+    });
   }
 }

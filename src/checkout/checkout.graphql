@@ -1,0 +1,11 @@
+input CheckoutProductInput {
+  id: ID!
+}
+
+input CheckoutInput {
+  products: [CheckoutProductInput!]!
+}
+
+type Mutation {
+  checkout(checkoutProducts: CheckoutInput!): [Product!]!
+}

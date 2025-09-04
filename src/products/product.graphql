@@ -9,6 +9,5 @@ type Product {
 }
 
 type Query {
-  getProduct(id: ID!): Product
   getProducts: [Product!]!
 }
