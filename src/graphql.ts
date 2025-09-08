@@ -23,6 +23,26 @@ export class InitiateCheckout {
 
 export abstract class IMutation {
     abstract checkout(checkoutProducts: CheckoutInput): InitiateCheckout | Promise<InitiateCheckout>;
+
+    abstract fetchOrder(paymentMethod: string, paymentKey: string): StripeCheckoutSession | Promise<StripeCheckoutSession>;
+}
+
+export class StripeLineItem {
+    id: string;
+    description?: Nullable<string>;
+    name?: Nullable<string>;
+    quantity?: Nullable<number>;
+    amount?: Nullable<number>;
+    currency?: Nullable<string>;
+}
+
+export class StripeCheckoutSession {
+    id: string;
+    paymentStatus: string;
+    amountTotal?: Nullable<number>;
+    currency?: Nullable<string>;
+    customerEmail?: Nullable<string>;
+    lineItems: StripeLineItem[];
 }
 
 export class Product {

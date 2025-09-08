@@ -9,6 +9,8 @@ import { ApolloServerPluginLandingPageLocalDefault } from '@apollo/server/plugin
 import { ProductsModule } from './products/products.module';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { CheckoutModule } from './checkout/checkout.module';
+import { OrderModule } from './order/order.module';
+import { StripeModule } from './stripe/stripe.module';
 
 @Module({
   imports: [
@@ -45,6 +47,8 @@ import { CheckoutModule } from './checkout/checkout.module';
     }),
     ProductsModule,
     CheckoutModule,
+    OrderModule,
+    StripeModule,
   ],
   controllers: [AppController],
   providers: [AppService],
