@@ -1,3 +1,4 @@
+# Input types
 input CheckoutProductInput {
   id: ID!
 }
@@ -6,21 +7,11 @@ input CheckoutInput {
   products: [CheckoutProductInput!]!
 }
 
-enum CheckoutStatus {
-  SUCCESS
-  FAILED
-}
-
-type CheckoutResult {
-  status: CheckoutStatus!
-  additionalInfo: String!
-}
-
-type CheckoutProductResult {
-  product: Product!
-  result: CheckoutResult!
+type InitiateCheckout {
+  paymentMethod: String!   # e.g., "stripe"
+  paymentKey: String!      # e.g., Stripe Checkout session ID or client secret
 }
 
 type Mutation {
-  checkout(checkoutProducts: CheckoutInput!): [CheckoutProductResult!]!
+  checkout(checkoutProducts: CheckoutInput!): InitiateCheckout!
 }
