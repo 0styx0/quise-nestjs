@@ -6,7 +6,7 @@ export class OrderResolver {
   constructor(private readonly orderService: OrderService) {}
 
   @Mutation('fetchOrder')
-  checkout(@Args('paymentMethod') paymentMethod: string, @Args('paymentKey') paymentKey: string) {
-    return this.orderService.getOrder(paymentMethod, paymentKey)
+  checkout(@Args('paymentKey') paymentKey: string) {
+    return this.orderService.getOrder(paymentKey)
   }
 }
