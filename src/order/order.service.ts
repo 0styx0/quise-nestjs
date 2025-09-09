@@ -12,9 +12,9 @@ export class OrderService {
         
         if (!checkout.line_items) {
             return {
-                priceTotal: 0,
-                customerEmail: '',
+                priceTotal: -1,
                 lineItems: [],
+                id: -1
             }
         }
 
@@ -25,8 +25,8 @@ export class OrderService {
         }));
 
         return {
+            id: checkout.id,
             priceTotal: checkout.amount_total,
-            customerEmail: checkout.customer_email || '',
             lineItems,
         };
     }

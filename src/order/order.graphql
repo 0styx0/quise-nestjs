@@ -8,7 +8,6 @@ type StripeLineItem {
 type StripeCheckoutSession {
   id: ID!
   priceTotal: Int!
-  customerEmail: String!
   lineItems: [StripeLineItem!]!
 }
 

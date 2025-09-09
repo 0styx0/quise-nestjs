@@ -36,7 +36,6 @@ export class StripeLineItem {
 export class StripeCheckoutSession {
     id: string;
     priceTotal: number;
-    customerEmail: string;
     lineItems: StripeLineItem[];
 }
 

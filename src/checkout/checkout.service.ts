@@ -18,7 +18,7 @@ export class CheckoutService {
     const products = await this.productsService.findByIds(ids)
     const clientUrl = this.configService.get<string>('CLIENT_URL')!
 
-    const session = await this.stripeService.createCheckoutSession(products, `${clientUrl}/receipt`, `${clientUrl}/cart`)
+    const session = await this.stripeService.createCheckoutSession(products, `${clientUrl}/receipt?session_id={CHECKOUT_SESSION_ID}`, `${clientUrl}/cart`)
 
     return {
       paymentMethod: 'stripe',

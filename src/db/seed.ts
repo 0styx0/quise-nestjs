@@ -51,7 +51,7 @@ async function seed() {
       name: 'Yacht',
       slug: 'luxury-yacht',
       description: 'High-end sailing experience',
-      price: 25000,
+      price: 250,
       imageUrl:
         'https://live.staticflickr.com/3949/15035857384_046901bb01_b.jpg',
     },
