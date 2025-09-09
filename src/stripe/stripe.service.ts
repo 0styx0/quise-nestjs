@@ -49,7 +49,7 @@ export class StripeService {
           name: p.name,
           description: p.description,
         },
-        unit_amount: p.price, // in cents
+        unit_amount: p.price * 100, // in cents
       },
       quantity: 1,
     }));
