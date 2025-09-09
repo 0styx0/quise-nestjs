@@ -7,8 +7,8 @@ input CheckoutInput {
 }
 
 type InitiateCheckout {
-  paymentMethod: String!   # e.g., "stripe"
-  paymentKey: String!      # e.g., Stripe Checkout session ID or client secret
+  paymentMethod: String!
+  paymentKey: String!
 }
 
 type Mutation {

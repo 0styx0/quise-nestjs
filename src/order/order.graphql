@@ -1,0 +1,17 @@
+
+type StripeLineItem {
+  id: ID!
+  name: String!
+  priceUnit: Int!
+}
+
+type StripeCheckoutSession {
+  id: ID!
+  priceTotal: Int!
+  customerEmail: String!
+  lineItems: [StripeLineItem!]!
+}
+
+type Mutation {
+  fetchOrder(paymentKey: String!): StripeCheckoutSession!
+}

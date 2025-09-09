@@ -29,19 +29,14 @@ export abstract class IMutation {
 
 export class StripeLineItem {
     id: string;
-    description?: Nullable<string>;
-    name?: Nullable<string>;
-    quantity?: Nullable<number>;
-    amount?: Nullable<number>;
-    currency?: Nullable<string>;
+    name: string;
+    priceUnit: number;
 }
 
 export class StripeCheckoutSession {
     id: string;
-    paymentStatus: string;
-    amountTotal?: Nullable<number>;
-    currency?: Nullable<string>;
-    customerEmail?: Nullable<string>;
+    priceTotal: number;
+    customerEmail: string;
     lineItems: StripeLineItem[];
 }
 
