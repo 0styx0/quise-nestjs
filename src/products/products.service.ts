@@ -3,6 +3,7 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { MongoRepository } from 'typeorm';
 import { ObjectId } from 'mongodb';
 import { Product } from './product.entity';
+import { CreateProductInput } from 'src/graphql';
 
 @Injectable()
 export class ProductsService {
@@ -21,5 +22,14 @@ export class ProductsService {
     return this.productsRepository.find({
       where: { _id: { $in: objectIds } },
     });
+  }
+  
+  createMany(products: CreateProductInput[]) {
+
+    const productsToSave = products.map(
+      product => this.productsRepository.create(product)
+    )
+    
+    return this.productsRepository.save(productsToSave)
   }
 }

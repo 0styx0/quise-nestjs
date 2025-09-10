@@ -8,6 +8,18 @@ type Product {
   imageUrl: String!
 }
 
+input CreateProductInput {
+  name: String!
+  slug: String!
+  description: String!
+  price: Int!
+  imageUrl: String!
+}
+
 type Query {
   getProducts: [Product!]!
+}
+
+type Mutation {
+  createProducts(products: [CreateProductInput!]!): [Product!]!
 }

@@ -16,6 +16,14 @@ export class CheckoutInput {
     products: CheckoutProductInput[];
 }
 
+export class CreateProductInput {
+    name: string;
+    slug: string;
+    description: string;
+    price: number;
+    imageUrl: string;
+}
+
 export class InitiateCheckout {
     paymentMethod: string;
     paymentKey: string;
@@ -23,6 +31,8 @@ export class InitiateCheckout {
 
 export abstract class IMutation {
     abstract checkout(checkoutProducts: CheckoutInput): InitiateCheckout | Promise<InitiateCheckout>;
+
+    abstract createProducts(products: CreateProductInput[]): Product[] | Promise<Product[]>;
 }
 
 export class StripeLineItem {
