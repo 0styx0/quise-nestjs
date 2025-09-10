@@ -1,6 +1,10 @@
 import 'dotenv/config';
 import { DataSource } from 'typeorm';
 import { Product } from '../products/product.entity';
+import { User } from '../users/user.entity';
+import bcrypt from "bcrypt";
+
+const saltRounds = 10;
 
 const AppDataSource = new DataSource({
   type: 'mongodb' as const,
@@ -13,11 +17,39 @@ const AppDataSource = new DataSource({
     authSource: process.env.DB_AUTHSOURCE,
   },
   synchronize: true,
-  entities: [Product],
+  entities: [Product, User],
 });
 
 async function seed() {
   await AppDataSource.initialize();
+
+  await Promise.all([
+
+    seedProducts(),
+    seedUsers()
+  ])
+  console.log('Database seeded successfully');
+
+  await AppDataSource.destroy();
+}
+
+async function seedUsers() {
+
+  const userRepo = AppDataSource.getMongoRepository(User)
+
+  await userRepo.deleteMany({})
+
+  const users = [
+    {
+      username: 'Test',
+      password: await bcrypt.hash('test', saltRounds)
+    }
+  ]
+
+  return userRepo.insertMany(users)
+}
+
+async function seedProducts() {
 
   const productRepo = AppDataSource.getMongoRepository(Product);
 
@@ -72,10 +104,7 @@ async function seed() {
     },
   ];
 
-  await productRepo.insertMany(products);
-  console.log('Database seeded successfully');
-
-  await AppDataSource.destroy();
+  return productRepo.insertMany(products);
 }
 
 seed().catch((err) => {
