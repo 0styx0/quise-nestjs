@@ -28,7 +28,7 @@ async function seed() {
       name: 'T-Shirt',
       slug: 't-shirt',
       description: '100% cotton',
-      price: 1999,
+      price: 598,
       imageUrl:
         'https://live.staticflickr.com/4006/4625525150_b85341accd_b.jpg',
     },
