@@ -2,7 +2,12 @@
 
 Nest.JS GraphQL server for an e-commerce website.
 
-![Running a query in the GraphQL server](https://github.com/user-attachments/assets/27731761-6bf7-475c-91a5-823b33ea70c1)
+Capabilities:
+- Fetch products from database
+- Initiate checkout via Stripe
+- Fetch order details after checkout
+
+![Running a query in the GraphQL server](https://github.com/user-attachments/assets/c9a00bfd-5292-4b15-a1d9-7b212f49543a)
 
 ### Technologies
 - TypeScript
@@ -10,6 +15,7 @@ Nest.JS GraphQL server for an e-commerce website.
 - Nest.JS
 - MongoDB
 - TypeOrm
+- Stripe
 - Docker
 
 ### How to use
