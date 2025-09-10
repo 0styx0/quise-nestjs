@@ -2,7 +2,7 @@ import 'dotenv/config';
 import { DataSource } from 'typeorm';
 import { Product } from '../products/product.entity';
 import { User } from '../users/user.entity';
-import bcrypt from "bcrypt";
+import bcrypt from 'bcrypt';
 
 const saltRounds = 10;
 

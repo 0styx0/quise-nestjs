@@ -21,6 +21,10 @@ docker-compose exec -it mongo mongosh -u db_admin -p db_password --authenticatio
 1. Query order status via `getOrder`
 
 
+### Authentication
+```bash
+curl -X POST http://localhost:3000/auth/login -H "Content-Type: application/json" -d '{"username": "Test", "password": "test"}'
+```
 
 ### GraphQL example queries
 
