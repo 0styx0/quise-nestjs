@@ -23,8 +23,6 @@ export class InitiateCheckout {
 
 export abstract class IMutation {
     abstract checkout(checkoutProducts: CheckoutInput): InitiateCheckout | Promise<InitiateCheckout>;
-
-    abstract fetchOrder(paymentKey: string): StripeCheckoutSession | Promise<StripeCheckoutSession>;
 }
 
 export class StripeLineItem {
@@ -39,6 +37,12 @@ export class StripeCheckoutSession {
     lineItems: StripeLineItem[];
 }
 
+export abstract class IQuery {
+    abstract fetchOrder(paymentKey: string): StripeCheckoutSession | Promise<StripeCheckoutSession>;
+
+    abstract getProducts(): Product[] | Promise<Product[]>;
+}
+
 export class Product {
     id: string;
     slug: string;
@@ -46,10 +50,6 @@ export class Product {
     description: string;
     price: number;
     imageUrl: string;
-}
-
-export abstract class IQuery {
-    abstract getProducts(): Product[] | Promise<Product[]>;
 }
 
 type Nullable<T> = T | null;

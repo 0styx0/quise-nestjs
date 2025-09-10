@@ -1,4 +1,3 @@
-
 type StripeLineItem {
   id: ID!
   name: String!
@@ -11,6 +10,6 @@ type StripeCheckoutSession {
   lineItems: [StripeLineItem!]!
 }
 
-type Mutation {
+type Query {
   fetchOrder(paymentKey: String!): StripeCheckoutSession!
 }
