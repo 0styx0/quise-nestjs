@@ -4,6 +4,7 @@ import { Product } from './product.entity';
 import { CreateProductInput } from 'src/graphql';
 import { UseGuards } from '@nestjs/common';
 import { JwtAuthGuard } from 'src/auth/jwt-auth.guard';
+import { CreateProductsInputDto } from './dto/create-products.input';
 
 @Resolver(() => Product)
 export class ProductsResolver {
@@ -17,7 +18,7 @@ export class ProductsResolver {
   @UseGuards(JwtAuthGuard)
   @Mutation('createProducts')
   async createProducts(
-    @Args('products') products: CreateProductInput[],
+    @Args('products') products: CreateProductsInputDto[],
   ): Promise<Product[]> {
     return this.productService.createMany(products);
   }

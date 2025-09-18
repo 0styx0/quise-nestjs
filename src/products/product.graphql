@@ -4,7 +4,8 @@ type Product {
   slug: String!
   name: String!
   description: String!
-  price: Int!
+  # note: can be int but in practice site I don't want to handle that
+  price: Float!
   imageUrl: String!
 }
 
@@ -12,7 +13,7 @@ input CreateProductInput {
   name: String!
   slug: String!
   description: String!
-  price: Int!
+  price: Float!
   imageUrl: String!
 }
 
