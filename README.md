@@ -80,7 +80,7 @@ query FetchOrder($paymentKey: String!) {
       "name": "Bicycle",
       "slug": "bicycle",
       "description": "The ultimate in stylish travel",
-      "price": 111,
+      "price": 8999,
       "imageUrl": "https://live.staticflickr.com/3182/3026496994_473fe0571b_b.jpg"
     }
   ],

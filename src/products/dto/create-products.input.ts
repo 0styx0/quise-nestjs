@@ -2,8 +2,10 @@ import { InputType, PickType } from '@nestjs/graphql';
 import {
   IsCurrency,
   IsDecimal,
+  IsInt,
   IsLowercase,
   IsNotEmpty,
+  IsPositive,
   Matches,
   Min,
 } from 'class-validator';
@@ -18,7 +20,9 @@ export class CreateProductsInputDto extends CreateProductInput {
 
   declare description: string;
 
-  @IsCurrency({ allow_negatives: false })
+  @IsInt()
+  @IsPositive()
+  // cents
   declare price: number;
 
   @Matches(/^https:\/\/live\.staticflickr\.com\/.+\/.+$/)
