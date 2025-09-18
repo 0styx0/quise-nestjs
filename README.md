@@ -3,9 +3,10 @@
 Nest.JS GraphQL server for an e-commerce website.
 
 Capabilities:
-- Fetch products from database
+- Add products to the catalog (only after logging in) 
+- Fetch a list of products
 - Initiate checkout via Stripe
-- Fetch order details after checkout
+- View order details after checkout
 
 ![Running a query in the GraphQL server](https://github.com/user-attachments/assets/c9a00bfd-5292-4b15-a1d9-7b212f49543a)
 
