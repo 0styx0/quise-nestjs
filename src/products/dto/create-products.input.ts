@@ -9,7 +9,6 @@ import {
 } from 'class-validator';
 import { CreateProductInput, Product } from 'src/graphql';
 
-@InputType()
 export class CreateProductsInputDto extends CreateProductInput {
   declare name: string;
 
